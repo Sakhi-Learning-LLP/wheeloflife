@@ -16,6 +16,7 @@ class UIModel extends React.Component {
       modalDisplay: false,
       // dataObject:{},
       mail:"",
+      numModal:false,
       items: [
         { no: 1 },
         { no: 2 },
