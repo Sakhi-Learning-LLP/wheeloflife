@@ -6,17 +6,17 @@ import DoneIcon from '@material-ui/icons/Done';
 import MailOutlineIcon from '@material-ui/icons/MailOutline';
 import Email from './modal';
 
-
-
 class UIModel extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       toggleDisplay: true,
       modalDisplay: false,
+      numModal: false,
+      data: 0,
       // dataObject:{},
-      mail:"",
-      numModal:false,
+      mail: "",
+      index: 0,
       items: [
         { no: 1 },
         { no: 2 },
@@ -39,40 +39,39 @@ class UIModel extends React.Component {
         { text: "Possession" },
         { text: "Career" }
       ],
+      images: [
+        { src: 'wheel-of-life-react/img1.png' },
+        { src: 'wheel-of-life-react/img2.png' },
+        { src: 'wheel-of-life-react/img3.png' },
+        { src: 'wheel-of-life-react/img4.png' },
+        { src: 'wheel-of-life-react/img5.png' },
+        { src: 'wheel-of-life-react/img6.png' },
+        { src: 'wheel-of-life-react/img7.png' },
+        { src: 'wheel-of-life-react/img8.png' }
+      ],
       dropped: [null, null, null, null, null, null, null, null]
     }
   }
-   
+
   submit(e) {
     var goodToGo = 0;
     let { dropped } = this.state
-    // for(var i =0;i<dropped.length;i++){
-    //   if(this.state.dropped[i] != null){
-    //     goodToGo = 1;
-    //   }
-    //   else{
-    //     goodToGo = 0;
-    //   }
-    // }
 
-    if( dropped.includes(null))
+    if (dropped.includes(null))
       goodToGo = 0;
     else
       goodToGo = 1;
 
-    if( goodToGo == 1 ){
+    if (goodToGo == 1) {
       this.setState({
         toggleDisplay: false
-      }); 
+      });
     }
-    else{
+    else {
       alert("Please fill all the tiles");
     }
-    // let {dataObject,texts,dropped} = this.state;
-    // for(var i = 0;i<texts.length;i++){
-
-    // }
   }
+  
   email(e) {
     this.setState({
       modalDisplay: true
@@ -82,17 +81,16 @@ class UIModel extends React.Component {
   refreshPage = () => {
     window.location.reload();
   }
-  
+
   openModal = () => this.setState({ modalDisplay: true });
 
   render() {
-    const { toggleDisplay, modalDisplay } = this.state;
+    const { toggleDisplay, modalDisplay, numModal } = this.state;
 
     return (
       <div>
         <div className="header">
-          <img id="logo" src='../public/wings2life.png' />
-          {/* <img id="logo" src='D:/Projects/wheel-of-life-react/public' /> */}
+          <img id="logo" src='wheel-of-life-react/wings2life.png' />
           <div id="line">
             <div className="head">Wheel Of Life</div>
             {toggleDisplay ? <DoneIcon onClick={(e) => this.submit(e)} id="done" /> : <MailOutlineIcon id="mail" onClick={(e) => this.email(e)} />}
@@ -101,13 +99,12 @@ class UIModel extends React.Component {
         </div>
         <div>{toggleDisplay ? <DragDrop state={this.state} /> : <Submitted dropped={this.state.dropped} />}</div>
         <div>{modalDisplay ? <Email
-           show={modalDisplay}
-            mail={this.state.mail}
-            labels={this.state.texts}
-            values={this.state.dropped}
+          show={modalDisplay}
+          mail={this.state.mail}
+          labels={this.state.texts}
+          values={this.state.dropped}
         /> : null}</div>
       </div>
-
     );
   }
 }

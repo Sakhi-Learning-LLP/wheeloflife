@@ -31,7 +31,6 @@ class Email extends Component {
     }
 
     showThank = () => {
-        // alert("");
         toast.success('E-mail successfully send', {
             position: "top-center",
             autoClose: 5000,
@@ -128,7 +127,7 @@ class Email extends Component {
                 {this.state.show ?
                     <div className="modal">
 
-                        <Modal show={this.props.show} >
+                        <Modal id="mailModal" show={this.props.show} >
                             <Modal.Header>
                                 <Button onClick={this.close} className="closeBtn">
                                     x
