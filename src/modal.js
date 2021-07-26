@@ -31,7 +31,7 @@ class Email extends Component {
     }
 
     showThank = () => {
-        toast.success('E-mail successfully send', {
+        toast.success('E-mail successfully sent', {
             position: "top-center",
             autoClose: 5000,
             hideProgressBar: false,
