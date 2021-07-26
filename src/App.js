@@ -90,7 +90,7 @@ class UIModel extends React.Component {
     return (
       <div>
         <div className="header">
-          <img id="logo" src='wheel-of-life-react/wings2life.png' />
+          <img id="logo" src={process.env.PUBLIC_URL+"/wings2life.png"}/>
           <div id="line">
             <div className="head">Wheel Of Life</div>
             {toggleDisplay ? <DoneIcon onClick={(e) => this.submit(e)} id="done" /> : <MailOutlineIcon id="mail" onClick={(e) => this.email(e)} />}
